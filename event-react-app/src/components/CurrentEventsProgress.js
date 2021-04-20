@@ -6,11 +6,13 @@ import moment from 'moment'
 import Moment from 'react-moment';
 
 
-const api = new Api.DefaultApi()
+const api = new Api.DefaultApi();
+//let response;
 
 class CurrentEventsProgress extends React.Component {
 
     constructor(props) {
+        
         super(props);
         const id =  this.props.match?.params.id || moment().format('YYYY-MM-DD');
         console.log(id);
@@ -18,10 +20,15 @@ class CurrentEventsProgress extends React.Component {
         
 
         this.state = { 
-            events: [{id:'xyz1', time: "15:00", food:"Сharlotte"},
-            {id:'pop', time: "18:00", food: "Vinaigrette"},
-            {id:'pop', time: "21:00", food: "From the chief"}
-        ],
+            events: [
+                {id:'xyz1', date: "2021-04-20", city: "Minsk", temperature: "20"},
+                {id:'pop1', date: "2021-04-21", city: "Minsk", temperature: "17"},
+                {id:'pop2', date: "2021-04-22", city: "Minsk", temperature: "6"},
+                {id:'pop3', date: "2021-04-23", city: "Minsk", temperature: "15"},
+                {id:'pop4', date: "2021-04-24", city: "Minsk", temperature: "8"},
+                {id:'pop5', date: "2021-04-25", city: "Minsk", temperature: "19"},
+                {id:'pop6', date: "2021-04-26", city: "Minsk", temperature: "14"}
+            ],
             date: id 
         };
 
@@ -31,7 +38,7 @@ class CurrentEventsProgress extends React.Component {
 
 
     async handleReload(event) {
-        //const response = await api.events({ date: '2021-03-25'/*this.state.targetDate*/ });
+        //response = await api.events({ date: '2021-03-25'/*this.state.targetDate*/ });
         //this.setState({ events: response });
     }
 
@@ -40,14 +47,15 @@ class CurrentEventsProgress extends React.Component {
         return <div>
             {/* <button onClick={this.handleReload}>Reload</button> */}
             <section>
-            <h1> Goodies <Moment format="YYYY/MM/DD">{this.state.date}</Moment> </h1>
+            <h1> Weather prognoze</h1>
             <ul>
                {this.state.events.map(
                    (event) => 
-                        <li key={event.id}>{event.food} {event.time}</li>)}
+                        <li key={event.id}>{event.city}: At {event.date} we are expecting {event.temperature}.</li>)}
             </ul>
             </section>
         </div>
+        
     }
 }
 
