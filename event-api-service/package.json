@@ -10,7 +10,8 @@
   "dependencies": {
     "express": "^4.12.3",
     "faker": "^5.4.0",
-    "swagger-express-mw": "^0.1.0"
+    "swagger-express-mw": "^0.1.0",
+    "yarn": "^1.22.10"
   },
   "devDependencies": {
     "should": "^7.1.0",
