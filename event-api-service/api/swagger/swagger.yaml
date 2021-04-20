@@ -35,7 +35,31 @@ paths:
           description: Success
           schema:
             # a pointer to a definition
-            $ref: "#/definitions/EventResponse"
+            $ref: "#/definitions/WeatherResponse"
+        # responses may fall through to errors
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /map:
+    # binds a127 app logic to a route
+    x-swagger-router-controller: map-controller
+    get:
+      description: Returns list of city events
+      # used as the method name of the controller
+      operationId: map
+      parameters:
+        - name: date
+          in: query
+          description: FIltering date
+          required: false
+          type: string
+      responses:
+        "200":
+          description: Success
+          schema:
+            # a pointer to a definition
+            $ref: "#/definitions/MapWeatheResponse"
         # responses may fall through to errors
         default:
           description: Error
@@ -45,12 +69,17 @@ paths:
     x-swagger-pipe: swagger_raw
 # complex objects have schema definitions
 definitions:
-  EventResponse:
+  MapWeatheResponse:
+    type: array
+    items:
+      $ref: "#/definitions/MapWeather"
+  
+  WeatherResponse:
       type: array
       items:
-        $ref: "#/definitions/Event"
+        $ref: "#/definitions/Weather"
         
-  Event:
+  Weather:
     required:
       - id
     properties:
@@ -58,10 +87,24 @@ definitions:
         type: string
       nameCity:
         type: string
+      temperature:
+        type: string
       image:
         type: string
       date:
         type: string
+        
+  MapWeather:
+    required:
+      - id
+    properties:
+      id:
+        type: string
+      temperature:
+        type: string
+      city:
+        type: string
+      
         
   ErrorResponse:
     required:

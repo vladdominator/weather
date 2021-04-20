@@ -38,6 +38,10 @@ function getEvents(req, res) {
     {
       "id": '' + faker.random.number(),
       "nameCity": faker.address.city(),
+      "temperature": '' + faker.random.number({
+        "min": 0,
+        "max": 20
+    }),
       "image": faker.image.city(),
       "date": date
     }
