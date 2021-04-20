@@ -25,7 +25,7 @@ function App() {
               <Link className="Link" to="/">Home</Link>
             </li>
             <li>
-              <Link className="Link" to="/goodies">Today goodies</Link>
+              <Link className="Link" to="/weather">Weather</Link>
             </li>
             <li>
               <Link className="Link" to="/workers">Workers</Link>
@@ -48,11 +48,11 @@ function App() {
             <Route path="/about">
               <About />
             </Route>
-            <Route path="/goodies/:id">
+            <Route path="/weather/:id">
               <CurrentEventsProgress />
             </Route>
-            <Route path="/goodies">
-              <Redirect to={`/goodies/${moment().format('YYYY-MM-DD')}`} />
+            <Route path="/weather">
+              <Redirect to={`/weather/${moment().format('YYYY-MM-DD')}`} />
             </Route>
             
             <Route path="/workers">
@@ -60,8 +60,8 @@ function App() {
             </Route>
             
             <Route path="/">
-              <h1>Welcome to ReadPeas</h1>
-              <p>Welcome to ReadPeas. Please order now <Link to="/flights">foods.</Link></p>
+              <h1>Welcome to RedPeas Weather</h1>
+              <p>Welcome to ReadPeas. Please see now <Link to="/weather"> weather.</Link></p>
               <img className='food' src={food} />
             </Route>
 
