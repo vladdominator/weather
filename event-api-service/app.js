@@ -18,9 +18,12 @@ SwaggerExpress.create(config, function(err, swaggerExpress) {
   app.listen(port);
 
   if (swaggerExpress.runner.swagger.paths['/events']) {
-    console.log('try this:\ncurl http://127.0.0.1:' + port + '/api/v1/events?date=2021-02-22');
+    console.log('curl http://127.0.0.1:' + port + '/api/v1/events?date=2021-02-22');
   }
   if (swaggerExpress.runner.swagger.paths['/map']) {
-    console.log('try this:\ncurl http://127.0.0.1:' + port + '/api/v1/map?date=2021-02-22');
+    console.log('curl http://127.0.0.1:' + port + '/api/v1/map?date=2021-02-22');
+  }
+  if (swaggerExpress.runner.swagger.paths['/places']) {
+    console.log('curl http://127.0.0.1:' + port + '/api/v1/places?date=2021-02-22');
   }
 });
