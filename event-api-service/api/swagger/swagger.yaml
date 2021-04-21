@@ -65,6 +65,30 @@ paths:
           description: Error
           schema:
             $ref: "#/definitions/ErrorResponse"
+  /places:
+    # binds a127 app logic to a route
+    x-swagger-router-controller: places-controller
+    get:
+      description: Returns list of city events
+      # used as the method name of the controller
+      operationId: places
+      parameters:
+        - name: date
+          in: query
+          description: FIltering date
+          required: false
+          type: string
+      responses:
+        "200":
+          description: Success
+          schema:
+            # a pointer to a definition
+            $ref: "#/definitions/PlacesWeatheResponse"
+        # responses may fall through to errors
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
   /swagger:
     x-swagger-pipe: swagger_raw
 # complex objects have schema definitions
@@ -79,6 +103,10 @@ definitions:
       items:
         $ref: "#/definitions/Weather"
         
+  PlacesWeatheResponse:
+      type: array
+      items:
+        $ref: "#/definitions/PlacesWeather"      
   Weather:
     required:
       - id
@@ -104,7 +132,19 @@ definitions:
         type: string
       city:
         type: string
-      
+  
+  PlacesWeather:        
+    required:
+      - id
+    properties:
+      id:
+        type: string
+      image:
+        type: string
+      city:
+        type: string 
+      temperature:
+        type: string
         
   ErrorResponse:
     required:
