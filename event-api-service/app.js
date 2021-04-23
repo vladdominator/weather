@@ -22,11 +22,8 @@ SwaggerExpress.create(config, function(err, swaggerExpress) {
   }
   if (swaggerExpress.runner.swagger.paths['/map']) {
     console.log('curl http://127.0.0.1:' + port + '/api/v1/map?date=2021-02-22');
-<<<<<<< HEAD
-=======
   }
   if (swaggerExpress.runner.swagger.paths['/places']) {
     console.log('curl http://127.0.0.1:' + port + '/api/v1/places?date=2021-02-22');
->>>>>>> ca2750562a4073a28fc890ba0c13b2bb9282fcb2
   }
 });
