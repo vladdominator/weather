@@ -1,4 +1,4 @@
-import food from './food.jpg'
+import weather from './weather.jpg'
 import './App.css';
 import React from 'react';
 import WeeklyScheduler from './components/Monthly';
@@ -62,7 +62,7 @@ function App() {
             <Route path="/">
               <h1>Welcome to RedPeas Weather</h1>
               <p>Welcome to ReadPeas. Please see now <Link to="/weather"> weather.</Link></p>
-              <img className='food' src={food} />
+              <img className='weather' src={weather} />
             </Route>
 
             <Route path="*">
